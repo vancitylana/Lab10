@@ -1,0 +1,14 @@
+language: cpp
+compiler:
+  - gcc
+  - clang
+before_script:
+  - mkdir ../build
+  - cd ../build
+script:
+  - cmake ../lab10
+  - make -j
+  - ls
+  - ./test/Polinom_Test
+notifications:
+  email: false
