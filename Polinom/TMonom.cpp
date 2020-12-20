@@ -40,7 +40,7 @@ bool TMonom::operator==(const TMonom& _v)
 
   if (data.dim != _v.data.dim)
   {
-    throw "Error";
+    f = false;
   }
 
   if (data.dim > 0)
@@ -273,9 +273,10 @@ TMonom* TMonom::operator-(const TMonom& _v)
 
 bool TMonom::operator>(const TMonom& _v)
 {
+  bool temp = true;
   if (data.dim != _v.data.dim)
   {
-    throw "Error";
+    temp = false;
   }
 
   if (data.dim > 0)
@@ -284,30 +285,31 @@ bool TMonom::operator>(const TMonom& _v)
     {
       if (data.data[i] > _v.data.data[i])
       {
-        return true;
+        temp = true;
       }
       else if (data.data[i] < _v.data.data[i])
       {
-        return false;
+        temp = false;
       }
       else
       {
         continue;
       }
     }
-    return false;
+    temp = false;
   }
   else
   {
     return data.K > _v.data.K;
   }
+  return temp;
 }
 
 bool TMonom::operator<(const TMonom& _v)
 {
   if (data.dim != _v.data.dim)
   {
-    throw "Error";
+    return false;
   }
 
   if (data.dim > 0)
